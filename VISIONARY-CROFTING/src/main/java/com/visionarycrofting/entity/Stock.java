@@ -6,27 +6,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Client implements Serializable {
+public class Stock implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String nom;
+    private String adresse;
     private String email;
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "client")
-    private List<Commande> commandes = new ArrayList<>();
+    @OneToMany(mappedBy = "stock")
+    private List<Produit> produits = new ArrayList<>();
 
-    public Client() {
+    @OneToMany(mappedBy = "stock")
+    private List<AppeleOffre> appeleOffres = new ArrayList<>();
+
+    public Stock() {
     }
 
-    public Client(String nom, String email, String telephone, String password, List<Commande> commandes) {
+    public Stock(String nom, String adresse, String email, String telephone, String password, List<Produit> produits, List<AppeleOffre> appeleOffres) {
         this.nom = nom;
+        this.adresse = adresse;
         this.email = email;
         this.telephone = telephone;
         this.password = password;
-        this.commandes = commandes;
+        this.produits = produits;
+        this.appeleOffres = appeleOffres;
     }
 
     public int getId() {
@@ -43,6 +49,14 @@ public class Client implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public String getEmail() {
@@ -69,23 +83,33 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public List<Commande> getCommandes() {
-        return commandes;
+    public List<Produit> getProduits() {
+        return produits;
     }
 
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
+
+    public List<AppeleOffre> getAppeleOffres() {
+        return appeleOffres;
+    }
+
+    public void setAppeleOffres(List<AppeleOffre> appeleOffres) {
+        this.appeleOffres = appeleOffres;
     }
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "Stock{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
+                ", adresse='" + adresse + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
-                ", commandes=" + commandes +
+                ", produits=" + produits +
+                ", appeleOffres=" + appeleOffres +
                 '}';
     }
 }
