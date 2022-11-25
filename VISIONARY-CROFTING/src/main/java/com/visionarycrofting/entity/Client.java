@@ -15,7 +15,7 @@ public class Client implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "client")
     private List<Commande> commandes = new ArrayList<>();
 
     public Client() {

@@ -16,10 +16,10 @@ public class Stock implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "stock")
     private List<Produit> produits = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "stock")
     private List<AppeleOffre> appeleOffres = new ArrayList<>();
 
     public Stock() {
