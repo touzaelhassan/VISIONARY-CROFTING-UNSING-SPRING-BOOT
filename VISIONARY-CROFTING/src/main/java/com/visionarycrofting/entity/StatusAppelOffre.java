@@ -1,5 +1,5 @@
 package com.visionarycrofting.entity;
 
-public enum Status {
+public enum StatusAppelOffre {
     OUVERTE,VALIDE,CLOSE
 }
