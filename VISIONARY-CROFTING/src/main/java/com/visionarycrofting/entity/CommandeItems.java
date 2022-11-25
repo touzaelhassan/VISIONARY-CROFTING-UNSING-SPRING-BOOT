@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class CommandeItems {
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "id", nullable = false)
     private int id;
 
