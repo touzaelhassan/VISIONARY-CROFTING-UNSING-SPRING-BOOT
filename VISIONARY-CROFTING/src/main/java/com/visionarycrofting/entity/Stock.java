@@ -20,12 +20,12 @@ public class Stock implements Serializable {
     private List<Produit> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
-    private List<AppeleOffre> appeleOffres = new ArrayList<>();
+    private List<AppelOffre> appeleOffres = new ArrayList<>();
 
     public Stock() {
     }
 
-    public Stock(String nom, String adresse, String email, String telephone, String password, List<Produit> produits, List<AppeleOffre> appeleOffres) {
+    public Stock(String nom, String adresse, String email, String telephone, String password, List<Produit> produits, List<AppelOffre> appeleOffres) {
         this.nom = nom;
         this.adresse = adresse;
         this.email = email;
@@ -91,11 +91,11 @@ public class Stock implements Serializable {
         this.produits = produits;
     }
 
-    public List<AppeleOffre> getAppeleOffres() {
+    public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
     }
 
-    public void setAppeleOffres(List<AppeleOffre> appeleOffres) {
+    public void setAppeleOffres(List<AppelOffre> appeleOffres) {
         this.appeleOffres = appeleOffres;
     }
 
