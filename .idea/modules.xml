@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/VISIONARY-CROFTING/VISIONARY-CROFTING.iml" filepath="$PROJECT_DIR$/VISIONARY-CROFTING/VISIONARY-CROFTING.iml" />
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/VISIONARY-CROFTING-UNSING-SPRING-BOOT.iml" filepath="$PROJECT_DIR$/.idea/VISIONARY-CROFTING-UNSING-SPRING-BOOT.iml" />
+=======
+>>>>>>> main
     </modules>
   </component>
 </project>
