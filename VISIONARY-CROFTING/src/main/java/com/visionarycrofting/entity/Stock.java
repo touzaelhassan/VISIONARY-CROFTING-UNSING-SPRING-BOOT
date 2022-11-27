@@ -16,8 +16,8 @@ public class Stock implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "stock")
-    private List<Produit> produits = new ArrayList<>();
+    //@OneToMany(mappedBy = "stock")
+   // private List<Produit> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
     private List<AppelOffre> appeleOffres = new ArrayList<>();
@@ -25,13 +25,12 @@ public class Stock implements Serializable {
     public Stock() {
     }
 
-    public Stock(String nom, String adresse, String email, String telephone, String password, List<Produit> produits, List<AppelOffre> appeleOffres) {
+    public Stock(String nom, String adresse, String email, String telephone, String password,List<AppelOffre> appeleOffres) {
         this.nom = nom;
         this.adresse = adresse;
         this.email = email;
         this.telephone = telephone;
         this.password = password;
-        this.produits = produits;
         this.appeleOffres = appeleOffres;
     }
 
@@ -83,13 +82,13 @@ public class Stock implements Serializable {
         this.password = password;
     }
 
-    public List<Produit> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
-    }
+//    public List<Produit> getProduits() {
+//        return produits;
+//    }
+//
+//    public void setProduits(List<Produit> produits) {
+//        this.produits = produits;
+//    }
 
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
@@ -108,7 +107,6 @@ public class Stock implements Serializable {
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
-                ", produits=" + produits +
                 ", appeleOffres=" + appeleOffres +
                 '}';
     }
