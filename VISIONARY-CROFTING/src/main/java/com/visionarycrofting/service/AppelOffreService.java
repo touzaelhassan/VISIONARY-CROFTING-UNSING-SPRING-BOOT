@@ -46,27 +46,9 @@ public class AppelOffreService implements IAppelOffreService {
     }
 
     @Transactional
-    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Fornisseur fournisseur) {
+    public void updateAppelOffre(Integer id,AppelOffre appelOffreNew){
         AppelOffre appelOffre=appelOffreRepository.findById(id)
                 .orElseThrow(()->new IllegalStateException("Appel Offre with this id doesn't exist"));
-        if(reference!=null && reference.length()>0 &&
-                !Objects.equals(appelOffre.getReference(),reference)){
-            appelOffre.setReference(reference);
-        }
-        if(statusAppelOffre!=null && statusAppelOffre.toString().length()>0 &&
-                !Objects.equals(appelOffre.getStatusAppelOffre(),statusAppelOffre)){
-            appelOffre.setStatusAppelOffre(statusAppelOffre);
-        }
-        if(produit!=null &&
-                !Objects.equals(appelOffre.getProduit(),produit)){
-            appelOffre.setProduit(produit);
-        }
-        if(fournisseur!=null &&
-                !Objects.equals(appelOffre.getFournisseur(),fournisseur)){
-            appelOffre.setFournisseur(fournisseur);
-        }
-
-        appelOffreRepository.save(appelOffre);
-
+      appelOffre.setReference(appelOffreNew.getReference());
     }
 }
