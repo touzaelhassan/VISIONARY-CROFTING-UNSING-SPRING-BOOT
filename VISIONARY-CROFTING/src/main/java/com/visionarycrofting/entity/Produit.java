@@ -1,6 +1,8 @@
 package com.visionarycrofting.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -16,6 +18,30 @@ public class Produit {
     private String description;
     private Category category;
     private int quantity;
+
+    @ManyToOne
+    private Stock stock;
+
+    @OneToMany (mappedBy = "produit")
+    private List<CommandeItems> commandeItems = new ArrayList<>();
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+
+    public List<CommandeItems> getCommandeItems() {
+        return commandeItems;
+    }
+
+    public void setCommandeItems(List<CommandeItems> commandeItems) {
+        this.commandeItems = commandeItems;
+    }
+
+
 
     public Produit() { }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    private Long id;
     private String nom;
     private String email;
     private String telephone;
@@ -29,11 +29,11 @@ public class Client implements Serializable {
         this.commandes = commandes;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
