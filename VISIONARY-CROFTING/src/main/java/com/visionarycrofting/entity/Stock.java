@@ -1,5 +1,8 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -91,11 +94,11 @@ public class Stock implements Serializable {
    public void setProduits(List<Produit> produits) {
       // this.produits = produits;
    }
-
+    @JsonIgnore
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
     }
-
+@JsonSetter
     public void setAppeleOffres(List<AppelOffre> appeleOffres) {
         this.appeleOffres = appeleOffres;
     }
