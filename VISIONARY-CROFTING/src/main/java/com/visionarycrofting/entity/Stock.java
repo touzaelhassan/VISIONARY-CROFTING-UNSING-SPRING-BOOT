@@ -17,7 +17,7 @@ public class Stock implements Serializable {
     private String password;
 
     //@OneToMany(mappedBy = "stock")
-   // private List<Produit> produits = new ArrayList<>();
+    //private List<Produit> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
     private List<AppelOffre> appeleOffres = new ArrayList<>();
@@ -82,13 +82,13 @@ public class Stock implements Serializable {
         this.password = password;
     }
 
-//    public List<Produit> getProduits() {
-//        return produits;
-//    }
-//
-//    public void setProduits(List<Produit> produits) {
-//        this.produits = produits;
-//    }
+   //public List<Produit> getProduits() {
+     //   return produits;
+  // }
+
+   public void setProduits(List<Produit> produits) {
+      // this.produits = produits;
+   }
 
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
