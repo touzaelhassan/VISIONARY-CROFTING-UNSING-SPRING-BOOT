@@ -10,11 +10,13 @@ public class Fornisseur implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String nom;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String telephone;
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "fournisseur")
     private List<AppelOffre> appelOffres;
 
     public Fornisseur() {
@@ -22,6 +24,7 @@ public class Fornisseur implements Serializable {
 
     public Fornisseur(String nom, String email, String telephone, String password, List<AppelOffre> appelOffres) {
         this.nom = nom;
+
         this.email = email;
         this.telephone = telephone;
         this.password = password;
