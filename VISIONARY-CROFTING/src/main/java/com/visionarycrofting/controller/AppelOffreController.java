@@ -34,8 +34,8 @@ public class AppelOffreController {
 
     }
     @PutMapping(path = "{id}")
-    public void updateAppelOffre(@PathVariable("id") Integer id, @RequestParam(required = false)String reference, @RequestParam(required = false) StatusAppelOffre statusAppelOffre, @RequestParam(required = false) Produit produit,@RequestParam(required = false) Fornisseur fournisseur){
-     appelOffreService.updateAppelOffre(id,reference,statusAppelOffre,produit,fournisseur);
+    public void updateAppelOffre(@PathVariable("id") Integer id, @RequestBody AppelOffre appelOffre){
+     appelOffreService.updateAppelOffre(id,appelOffre);
     }
 
 
