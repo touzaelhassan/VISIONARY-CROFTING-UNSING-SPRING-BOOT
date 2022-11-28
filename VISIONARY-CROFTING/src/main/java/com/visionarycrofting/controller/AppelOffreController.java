@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("appelOffre/")
+@RequestMapping("appelOffre")
 public class AppelOffreController {
     private final AppelOffreService appelOffreService;
 
