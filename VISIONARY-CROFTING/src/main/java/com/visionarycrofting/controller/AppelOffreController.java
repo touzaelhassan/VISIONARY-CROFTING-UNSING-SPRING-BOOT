@@ -25,6 +25,11 @@ public class AppelOffreController {
     public void addAppelOffre(@RequestBody AppelOffre appelOffre){
         appelOffreService.addAppelOffre(appelOffre);
     }
+    @DeleteMapping(path = "{id}")
+    public void deleteAppelOffre(@PathVariable("id") Integer id){
+        appelOffreService.deleteAppelOffre(id);
+
+    }
 
 
 
