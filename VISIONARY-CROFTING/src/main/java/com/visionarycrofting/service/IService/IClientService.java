@@ -11,5 +11,6 @@ public interface IClientService {
     Client save(Client client);
     List<Client> findAll();
     void deleteById(Long id);
+    Client findByEmail(String email);
 
 }
