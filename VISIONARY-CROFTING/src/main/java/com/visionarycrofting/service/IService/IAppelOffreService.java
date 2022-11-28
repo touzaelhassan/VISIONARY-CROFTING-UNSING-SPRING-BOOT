@@ -13,5 +13,5 @@ public interface IAppelOffreService {
 
     public void deleteAppelOffre(Integer id);
 
-    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit);
+    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit,Fournisseur fournisseur);
 }
