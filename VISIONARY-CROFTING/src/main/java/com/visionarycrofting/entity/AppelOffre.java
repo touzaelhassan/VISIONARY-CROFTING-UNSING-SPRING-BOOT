@@ -13,7 +13,7 @@ public class AppelOffre {
     @Enumerated(EnumType.STRING)
     private StatusAppelOffre statusAppelOffre;
     @ManyToOne
-    Produit Produit;
+    private Produit Produit;
 
     @ManyToOne
     Stock stock;
@@ -22,7 +22,7 @@ public class AppelOffre {
         this.id = id;
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
-        Produit = produit;
+        this.Produit = produit;
         this.stock = stock;
     }
 
@@ -72,10 +72,9 @@ public class AppelOffre {
     @Override
     public String toString() {
         return "AppelOffre{" +
-                "id=" + id +
-                ", reference='" + reference + '\'' +
+                "reference='" + reference + '\'' +
                 ", statusAppelOffre=" + statusAppelOffre +
-                ", Produit=" Produit +
+                ", Produit=" + Produit +
                 ", stock=" + stock +
                 '}';
     }
