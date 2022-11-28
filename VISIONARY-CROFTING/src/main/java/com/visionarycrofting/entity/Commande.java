@@ -19,9 +19,9 @@ public class Commande {
 
     private Float prixTotal;
 
-    private StatusEnum status ;
+    private StatusCommande status ;
 
-    @OneToMany(mappedBy = "commande")
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
     private List<CommandeItems> commandeItems = new ArrayList<>();
 
     @ManyToOne
@@ -37,14 +37,7 @@ public class Commande {
 
 
 
-    public enum StatusEnum {
-        EN_COURS("en-cours"),
-        EFFECTUER("effectuer");
-        private String name;
-        StatusEnum(String name) {
-            this.name = name;
-        }
-    }
+
 
     public String getReference() {
         return reference;
@@ -70,11 +63,11 @@ public class Commande {
         this.prixTotal = prixTotal;
     }
 
-    public StatusEnum getStatus() {
+    public StatusCommande getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(StatusCommande status) {
         this.status = status;
     }
 

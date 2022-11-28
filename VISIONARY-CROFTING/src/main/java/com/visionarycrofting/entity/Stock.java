@@ -12,12 +12,14 @@ public class Stock implements Serializable {
     private int id;
     private String nom;
     private String adresse;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String telephone;
     private String password;
 
     //@OneToMany(mappedBy = "stock")
-   // private List<Produit> produits = new ArrayList<>();
+    //private List<Produit> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
     private List<AppelOffre> appeleOffres = new ArrayList<>();
@@ -82,13 +84,13 @@ public class Stock implements Serializable {
         this.password = password;
     }
 
-//    public List<Produit> getProduits() {
-//        return produits;
-//    }
-//
-//    public void setProduits(List<Produit> produits) {
-//        this.produits = produits;
-//    }
+   //public List<Produit> getProduits() {
+     //   return produits;
+  // }
+
+   public void setProduits(List<Produit> produits) {
+      // this.produits = produits;
+   }
 
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;

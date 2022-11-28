@@ -2,14 +2,13 @@ package com.visionarycrofting.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Client implements Serializable {
+public class Fornisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+    private int id;
     private String nom;
     @Column(unique = true)
     private String email;
@@ -17,25 +16,26 @@ public class Client implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "client")
-    private List<Commande> commandes = new ArrayList<>();
+    @OneToMany(mappedBy = "fournisseur")
+    private List<AppelOffre> appelOffres;
 
-    public Client() {
+    public Fornisseur() {
     }
 
-    public Client(String nom, String email, String telephone, String password, List<Commande> commandes) {
+    public Fornisseur(String nom, String email, String telephone, String password, List<AppelOffre> appelOffres) {
         this.nom = nom;
+
         this.email = email;
         this.telephone = telephone;
         this.password = password;
-        this.commandes = commandes;
+        this.appelOffres = appelOffres;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,23 +71,23 @@ public class Client implements Serializable {
         this.password = password;
     }
 
-    public List<Commande> getCommandes() {
-        return commandes;
+    public List<AppelOffre> getAppelOffres() {
+        return appelOffres;
     }
 
-    public void setCommandes(List<Commande> commandes) {
-        this.commandes = commandes;
+    public void setAppelOffres(List<AppelOffre> appelOffres) {
+        this.appelOffres = appelOffres;
     }
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "Fornisseur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
-                ", commandes=" + commandes +
+                ", appelOffres=" + appelOffres +
                 '}';
     }
 }

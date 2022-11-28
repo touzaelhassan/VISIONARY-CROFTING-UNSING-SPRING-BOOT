@@ -1,11 +1,9 @@
 package com.visionarycrofting.repository;
 
-import com.visionarycrofting.entity.Stock;
+import com.visionarycrofting.entity.Commande;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IStockRepository extends JpaRepository<Stock,Integer> {
-    public Stock findByEmail(String email);
-
+public interface ICommandeRepository extends JpaRepository<Commande,Long> {
 }

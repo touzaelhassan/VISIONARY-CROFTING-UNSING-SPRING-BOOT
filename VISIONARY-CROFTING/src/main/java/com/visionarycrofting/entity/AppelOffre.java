@@ -8,32 +8,44 @@ public class AppelOffre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     private String reference;
     @Enumerated(EnumType.STRING)
     private StatusAppelOffre statusAppelOffre;
-    /*@ManyToOne
-    Produit Produit;*/
+    @ManyToOne
+    private Produit Produit;
 
     @ManyToOne
     Stock stock;
 
-    public AppelOffre(Long id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock) {
+    @ManyToOne
+    Fornisseur fournisseur;
+
+    public AppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fornisseur fournisseur) {
         this.id = id;
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
-        /*Produit = produit;*/
+        Produit = produit;
         this.stock = stock;
+        this.fournisseur = fournisseur;
+    }
+
+    public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock, Fornisseur fournisseur) {
+        this.reference = reference;
+        this.statusAppelOffre = statusAppelOffre;
+        Produit = produit;
+        this.stock = stock;
+        this.fournisseur = fournisseur;
     }
 
     public AppelOffre() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -53,13 +65,13 @@ public class AppelOffre {
         this.statusAppelOffre = statusAppelOffre;
     }
 
-    /*public Produit getProduit() {
+    public Produit getProduit() {
         return Produit;
     }
 
     public void setProduit(Produit produit) {
         Produit = produit;
-    }*/
+    }
 
     public Stock getStock() {
         return stock;
@@ -69,14 +81,23 @@ public class AppelOffre {
         this.stock = stock;
     }
 
+    public Fornisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fornisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+
     @Override
     public String toString() {
         return "AppelOffre{" +
                 "id=" + id +
                 ", reference='" + reference + '\'' +
                 ", statusAppelOffre=" + statusAppelOffre +
-                ", Produit="  +
+                ", Produit=" + Produit +
                 ", stock=" + stock +
+                ", fournisseur=" + fournisseur +
                 '}';
     }
 }
