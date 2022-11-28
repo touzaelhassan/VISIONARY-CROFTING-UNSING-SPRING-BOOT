@@ -2,6 +2,7 @@ package com.visionarycrofting.service;
 
 import com.visionarycrofting.entity.AppelOffre;
 import com.visionarycrofting.repository.IAppelOffreRepository;
+import com.visionarycrofting.service.IService.IAppelOffreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AppelOffreService {
+public class AppelOffreService implements IAppelOffreService {
     private final IAppelOffreRepository appelOffreRepository;
 
     @Autowired
