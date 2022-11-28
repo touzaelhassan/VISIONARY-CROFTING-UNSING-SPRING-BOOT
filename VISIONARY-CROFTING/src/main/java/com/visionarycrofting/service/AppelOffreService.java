@@ -30,5 +30,13 @@ public class AppelOffreService implements IAppelOffreService {
         appelOffreRepository.save(appelOffre);
     }
 
-
+    public void deleteAppelOffre(Integer id) {
+        boolean exists=appelOffreRepository.existsById(id);
+        if(!exists){
+            throw new IllegalStateException(
+                    "AppelOffre with id "+ id+" doesn't exists"
+            );
+        }
+        appelOffreRepository.deleteById(id);
+    }
 }

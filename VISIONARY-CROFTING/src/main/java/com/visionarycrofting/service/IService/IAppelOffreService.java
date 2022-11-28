@@ -8,4 +8,6 @@ public interface IAppelOffreService {
     public List<AppelOffre> getAppelOffres();
 
     public void addAppelOffre(AppelOffre appelOffre);
+
+    public void deleteAppelOffre(Integer id);
 }
