@@ -30,4 +30,8 @@ public class StockService {
     public Stock findOneStock(int idStock){
         return stockRepository.findById(idStock).get();
     }
+
+    public Stock findByEmail(String email){
+        return stockRepository.findByEmail(email);
+    }
 }
