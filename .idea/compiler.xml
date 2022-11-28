@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="VISIONARY-CROFTING" target="11" />
+      <module name="VISIONARY-CROFTING" target="${java.version}" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
