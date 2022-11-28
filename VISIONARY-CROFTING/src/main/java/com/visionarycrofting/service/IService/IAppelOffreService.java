@@ -1,6 +1,7 @@
 package com.visionarycrofting.service.IService;
 
 import com.visionarycrofting.entity.AppelOffre;
+import com.visionarycrofting.entity.Fornisseur;
 import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.entity.StatusAppelOffre;
 
@@ -13,5 +14,5 @@ public interface IAppelOffreService {
 
     public void deleteAppelOffre(Integer id);
 
-    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit,Fournisseur fournisseur);
+    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Fornisseur fournisseur);
 }

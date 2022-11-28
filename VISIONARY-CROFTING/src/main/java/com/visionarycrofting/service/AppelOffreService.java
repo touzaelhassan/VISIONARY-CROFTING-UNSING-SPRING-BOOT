@@ -1,6 +1,7 @@
 package com.visionarycrofting.service;
 
 import com.visionarycrofting.entity.AppelOffre;
+import com.visionarycrofting.entity.Fornisseur;
 import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.entity.StatusAppelOffre;
 import com.visionarycrofting.repository.IAppelOffreRepository;
@@ -44,7 +45,7 @@ public class AppelOffreService implements IAppelOffreService {
     }
 
 
-    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit,Fournisseur fournisseur) {
+    public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Fornisseur fournisseur) {
         AppelOffre appelOffre=appelOffreRepository.findById(id)
                 .orElseThrow(()->new IllegalStateException("Appel Offre with this id doesn't exist"));
         if(reference!=null && reference.length()>0 &&

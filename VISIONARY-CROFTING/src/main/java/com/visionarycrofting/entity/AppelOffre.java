@@ -19,9 +19,9 @@ public class AppelOffre {
     Stock stock;
 
     @ManyToOne
-    Fournisseur fournisseur;
+    Fornisseur fournisseur;
 
-    public AppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fournisseur fournisseur) {
+    public AppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fornisseur fournisseur) {
         this.id = id;
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
@@ -30,7 +30,7 @@ public class AppelOffre {
         this.fournisseur = fournisseur;
     }
 
-    public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fournisseur fournisseur) {
+    public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fornisseur fournisseur) {
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
         Produit = produit;
@@ -81,11 +81,11 @@ public class AppelOffre {
         this.stock = stock;
     }
 
-    public Fournisseur getFournisseur() {
+    public Fornisseur getFournisseur() {
         return fournisseur;
     }
 
-    public void setFournisseur(Fournisseur fournisseur) {
+    public void setFournisseur(Fornisseur fournisseur) {
         this.fournisseur = fournisseur;
     }
 
