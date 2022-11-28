@@ -16,4 +16,7 @@ public interface IAppelOffreService {
     public void updateAppelOffre(Integer id, AppelOffre appelOffre);
 
     public List<AppelOffre> findByStatusAppelOffre(StatusAppelOffre statusAppelOffre);
+
+    public void updateStatus(Integer id, StatusAppelOffre statusAppelOffre);
+
 }

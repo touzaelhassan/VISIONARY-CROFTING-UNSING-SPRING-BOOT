@@ -60,4 +60,8 @@ public class AppelOffreService implements IAppelOffreService {
         return appelOffreRepository.findByStatusAppelOffre(statusAppelOffre);
 
     }
+
+    public void updateStatus(Integer id,StatusAppelOffre statusAppelOffre){
+
+    }
 }
