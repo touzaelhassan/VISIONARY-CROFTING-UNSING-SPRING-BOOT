@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppelOffreService {
@@ -19,5 +20,14 @@ public class AppelOffreService {
     public List<AppelOffre> getAppelOffres(){
         return appelOffreRepository.findAll();
     }
+
+    public void addAppelOffre(AppelOffre appelOffre){
+        Optional<AppelOffre> appelOffreOptional=appelOffreRepository.findByReference(appelOffre.getReference());
+        if(appelOffreOptional.isPresent()){
+            throw new IllegalStateException("This reference already exists ");
+        }
+        appelOffreRepository.save(appelOffre);
+    }
+
 
 }
