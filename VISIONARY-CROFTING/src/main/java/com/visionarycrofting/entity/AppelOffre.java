@@ -8,7 +8,7 @@ public class AppelOffre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
     private String reference;
     @Enumerated(EnumType.STRING)
     private StatusAppelOffre statusAppelOffre;
@@ -18,7 +18,7 @@ public class AppelOffre {
     @ManyToOne
     Stock stock;
 
-    public AppelOffre(Long id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock) {
+    public AppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock) {
         this.id = id;
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
@@ -29,11 +29,11 @@ public class AppelOffre {
     public AppelOffre() {
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
