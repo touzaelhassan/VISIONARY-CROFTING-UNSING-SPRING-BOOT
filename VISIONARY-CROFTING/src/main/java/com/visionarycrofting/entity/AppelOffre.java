@@ -30,7 +30,7 @@ public class AppelOffre {
         this.fournisseur = fournisseur;
     }
 
-    public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, com.visionarycrofting.entity.Produit produit, Stock stock, Fornisseur fournisseur) {
+    public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock, Fornisseur fournisseur) {
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
         Produit = produit;

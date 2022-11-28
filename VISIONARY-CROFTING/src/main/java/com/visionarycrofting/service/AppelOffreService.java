@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,7 +45,7 @@ public class AppelOffreService implements IAppelOffreService {
         appelOffreRepository.deleteById(id);
     }
 
-
+    @Transactional
     public void updateAppelOffre(Integer id, String reference, StatusAppelOffre statusAppelOffre, Produit produit, Fornisseur fournisseur) {
         AppelOffre appelOffre=appelOffreRepository.findById(id)
                 .orElseThrow(()->new IllegalStateException("Appel Offre with this id doesn't exist"));
@@ -65,7 +66,7 @@ public class AppelOffreService implements IAppelOffreService {
             appelOffre.setFournisseur(fournisseur);
         }
 
-
+        appelOffreRepository.save(appelOffre);
 
     }
 }
