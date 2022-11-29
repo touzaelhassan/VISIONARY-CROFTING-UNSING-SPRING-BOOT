@@ -11,11 +11,11 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-
     private String reference;
     private String nom;
     private String prix_initial;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Category category;
     private int quantity;
 
@@ -24,24 +24,6 @@ public class Produit {
 
     @OneToMany (mappedBy = "produit")
     private List<CommandeItems> commandeItems = new ArrayList<>();
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-
-    public List<CommandeItems> getCommandeItems() {
-        return commandeItems;
-    }
-
-    public void setCommandeItems(List<CommandeItems> commandeItems) {
-        this.commandeItems = commandeItems;
-    }
-
-
 
     public Produit() { }
 
@@ -63,6 +45,12 @@ public class Produit {
     public void setDescription(String description) { this.description = description; }
     public void setCategory(Category category) { this.category = category; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+    public void setCommandeItems(List<CommandeItems> commandeItems) {
+        this.commandeItems = commandeItems;
+    }
 
     public Long getId() { return id; }
     public String getReference() { return reference; }
@@ -71,5 +59,11 @@ public class Produit {
     public String getDescription() { return description; }
     public Category getCategory() { return category; }
     public int getQuantity() { return quantity; }
+    public Stock getStock() {
+        return stock;
+    }
+    public List<CommandeItems> getCommandeItems() {
+        return commandeItems;
+    }
 
 }

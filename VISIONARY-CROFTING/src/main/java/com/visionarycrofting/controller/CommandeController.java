@@ -22,6 +22,4 @@ public class CommandeController {
         return commandeService.save(commande);
     }
 
-
-
 }
