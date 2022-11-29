@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/client")
@@ -22,6 +23,7 @@ public class ClientController {
     }
 
     @GetMapping("/allclient")
+    @ResponseBody
     public List<Client> findAll() {
         return clientService.findAll();
     }
@@ -30,6 +32,11 @@ public class ClientController {
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
          clientService.deleteById(id);
+    }
+
+    @GetMapping("client_id/{id}")
+    public Optional<Client> findById(@PathVariable Long id){
+        return clientService.findById(id);
     }
 
 
