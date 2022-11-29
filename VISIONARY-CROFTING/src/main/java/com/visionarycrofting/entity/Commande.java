@@ -1,16 +1,20 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Commande {
+public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
 
     @Column(unique = true)
     private String reference;
@@ -19,24 +23,22 @@ public class Commande {
 
     private Float prixTotal;
 
+
     private StatusCommande status ;
 
-    @OneToMany(mappedBy = "commande", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.REFRESH)
     private List<CommandeItems> commandeItems = new ArrayList<>();
 
     @ManyToOne
     private Client client ;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
-
-
 
 
     public String getReference() {
@@ -79,10 +81,12 @@ public class Commande {
         this.commandeItems = commandeItems;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }
 
+    @JsonSetter
     public void setClient(Client client) {
         this.client = client;
     }

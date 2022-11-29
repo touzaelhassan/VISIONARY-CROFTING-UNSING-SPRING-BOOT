@@ -1,9 +1,13 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class CommandeItems {
+public class CommandeItems implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "id", nullable = false)
@@ -54,10 +58,12 @@ public class CommandeItems {
         this.quantity = quantity;
     }
 
+    @JsonIgnore
     public Commande getCommande() {
         return commande;
     }
 
+    @JsonSetter
     public void setCommande(Commande commande) {
         this.commande = commande;
     }

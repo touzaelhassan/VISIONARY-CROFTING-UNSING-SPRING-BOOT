@@ -1,5 +1,9 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,8 +19,8 @@ public class Client implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "client")
-    private List<Commande> commandes = new ArrayList<>();
+    @OneToMany(mappedBy = "client" , fetch = FetchType.LAZY)
+    private List<Commande> commandes ;
 
     public Client() {
     }
@@ -68,11 +72,12 @@ public class Client implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    //@JsonIgnore
     public List<Commande> getCommandes() {
         return commandes;
     }
 
+    //@JsonSetter
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
