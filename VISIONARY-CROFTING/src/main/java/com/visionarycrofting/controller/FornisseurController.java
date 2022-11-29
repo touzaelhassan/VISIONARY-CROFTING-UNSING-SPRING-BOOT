@@ -20,7 +20,18 @@ public class FornisseurController {
     }
 
     @PostMapping("/")
-    public Fornisseur saveFornisseur(@RequestBody Fornisseur fornisseur){
+    public Object saveFornisseur(@RequestBody Fornisseur fornisseur){
+        Fornisseur fornisseurByEmail = new Fornisseur();
+        Fornisseur fornisseurByTelephone = new Fornisseur();
+        if(fornisseur.getEmail() == null || fornisseur.getPassword() == null
+        || fornisseur.getNom() == null || fornisseur.getTelephone() == null){
+            return "les information de Fournisseur est incomplit";
+        }
+        else if(fornisseurByEmail != null){
+            return "ce email "+fornisseur.getEmail()+" est deja existe";
+        }else if(fornisseurByTelephone != null){
+            return "ce numero de telephone "+ fornisseur.getTelephone()+" est deja existe";
+        }else
         return fornisseurService.saveFornisseur(fornisseur);
     }
 }

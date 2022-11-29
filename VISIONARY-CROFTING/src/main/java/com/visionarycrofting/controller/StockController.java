@@ -20,12 +20,24 @@ public class StockController {
     }
 
     @PostMapping("/")
-    public Stock saveStock(@RequestBody Stock stock){
-        return stockService.saveStock(stock);
+    public Object saveStock(@RequestBody Stock stock){
+        Stock stockByEmail = stockService.findByEmail(stock.getEmail());
+        Stock stockByTele = stockService.findByTelephone(stock.getTelephone());
+        if(stock.getNom() == null || stock.getPassword() == null
+        || stock.getEmail() == null || stock.getAdresse()==null || stock.getTelephone() == null){
+            return "compliter les information svp";
+        }else if(stockByEmail != null) {
+            return "ce email "+stock.getEmail()+" exsite déja";
+        }else if (stockByTele !=null){
+            return "ce numero de telephone "+stock.getTelephone()+" exsite déja";
+        }
+        else{
+            return stockService.saveStock(stock);
+        }
     }
 
     @PutMapping("/update/id/{idStock}")
-    public Stock updateStock(@RequestBody Stock stock,@PathVariable int idStock){
+    public Object updateStock(@RequestBody Stock stock,@PathVariable int idStock){
         Stock stock1 = stockService.findOneStock(idStock);
         stock1.setAdresse(stock.getAdresse());
         stock1.setEmail(stock.getEmail());
