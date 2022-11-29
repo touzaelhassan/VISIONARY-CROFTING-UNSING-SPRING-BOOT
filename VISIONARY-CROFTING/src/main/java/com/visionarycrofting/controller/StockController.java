@@ -25,7 +25,7 @@ public class StockController {
         Stock stockByTele = stockService.findByTelephone(stock.getTelephone());
         if(stock.getNom() == null || stock.getPassword() == null
         || stock.getEmail() == null || stock.getAdresse()==null || stock.getTelephone() == null){
-            return "compliter les information svp";
+            return "completer les information svp";
         }else if(stockByEmail != null) {
             return "ce email "+stock.getEmail()+" exsite déja";
         }else if (stockByTele !=null){
