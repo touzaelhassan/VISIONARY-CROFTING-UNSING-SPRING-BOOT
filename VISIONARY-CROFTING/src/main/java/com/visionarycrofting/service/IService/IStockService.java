@@ -15,4 +15,6 @@ public interface IStockService {
 
     public List<Stock> getAllStock();
 
+    public Stock findByTelephone(String telephone);
+
 }

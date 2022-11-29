@@ -18,8 +18,8 @@ public class Stock implements Serializable {
     private String telephone;
     private String password;
 
-    //@OneToMany(mappedBy = "stock")
-    //private List<Produit> produits = new ArrayList<>();
+    @OneToMany(mappedBy = "stock")
+    private List<Produit> produits = new ArrayList<>();
 
     @OneToMany(mappedBy = "stock")
     private List<AppelOffre> appeleOffres = new ArrayList<>();

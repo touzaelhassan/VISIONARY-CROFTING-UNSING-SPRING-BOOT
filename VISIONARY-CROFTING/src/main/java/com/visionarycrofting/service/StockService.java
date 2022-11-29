@@ -26,6 +26,11 @@ public class StockService implements IStockService {
     }
 
     @Override
+    public Stock findByTelephone(String telephone) {
+        return stockRepository.findByTelephone(telephone);
+    }
+
+    @Override
     public Stock updateStock(Stock stock){
         stockRepository.save(stock);
         return stock;

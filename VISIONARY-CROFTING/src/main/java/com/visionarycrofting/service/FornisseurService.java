@@ -29,4 +29,9 @@ public class FornisseurService implements IFornisseurService {
     public List<Fornisseur> getAllFornisseurs() {
         return fornisseurRepository.findAll();
     }
+
+    @Override
+    public Fornisseur findByTelephone(String telephone) {
+        return fornisseurRepository.findByTelephone(telephone);
+    }
 }
