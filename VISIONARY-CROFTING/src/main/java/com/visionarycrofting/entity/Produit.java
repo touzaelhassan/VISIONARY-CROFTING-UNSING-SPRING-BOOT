@@ -1,12 +1,13 @@
 package com.visionarycrofting.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
-public class Produit {
+public class Produit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
