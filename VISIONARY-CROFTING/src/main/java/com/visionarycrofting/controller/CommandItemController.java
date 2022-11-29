@@ -49,6 +49,11 @@ public class CommandItemController {
 
     }
 
+    @GetMapping("/quantity/{quantity}")
+    public List<CommandeItems> getCommandeItemByQuantityGreaterThan(@PathVariable int quantity){
+        return commandeItemService.getCommandeItemByQuantityGreaterThan(quantity);
+    }
+
 
 
 

@@ -26,7 +26,7 @@ public class Commande implements Serializable {
 
     private StatusCommande status ;
 
-    @OneToMany(mappedBy = "commande", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "commande", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private List<CommandeItems> commandeItems = new ArrayList<>();
 
     @ManyToOne

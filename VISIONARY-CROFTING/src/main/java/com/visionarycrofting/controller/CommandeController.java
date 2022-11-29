@@ -2,6 +2,7 @@ package com.visionarycrofting.controller;
 
 
 import com.visionarycrofting.entity.Commande;
+import com.visionarycrofting.entity.CommandeItems;
 import com.visionarycrofting.service.IService.ICommandeService;
 import com.visionarycrofting.utils.GenerateReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,8 @@ public class CommandeController {
     @GetMapping("/commande_ref/{ref}")
     public Commande findByReference(@PathVariable String ref){
         return commandeService.findByReference(ref);
-
     }
+
+
 
 }

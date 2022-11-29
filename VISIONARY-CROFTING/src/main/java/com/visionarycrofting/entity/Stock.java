@@ -1,5 +1,8 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,10 +21,10 @@ public class Stock implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "stock")
+    @OneToMany(mappedBy = "stock" ,fetch = FetchType.LAZY)
     private List<Produit> produits = new ArrayList<>();
 
-    @OneToMany(mappedBy = "stock")
+    @OneToMany(mappedBy = "stock",fetch = FetchType.LAZY)
     private List<AppelOffre> appeleOffres = new ArrayList<>();
 
     public Stock() {
@@ -84,18 +87,21 @@ public class Stock implements Serializable {
         this.password = password;
     }
 
-   //public List<Produit> getProduits() {
-     //   return produits;
-  // }
-
+    @JsonIgnore
+   public List<Produit> getProduits() {
+        return produits;
+  }
+    @JsonSetter
    public void setProduits(List<Produit> produits) {
-      // this.produits = produits;
+       this.produits = produits;
    }
 
+   @JsonIgnore
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
     }
 
+    @JsonSetter
     public void setAppeleOffres(List<AppelOffre> appeleOffres) {
         this.appeleOffres = appeleOffres;
     }
@@ -109,7 +115,6 @@ public class Stock implements Serializable {
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
-                ", appeleOffres=" + appeleOffres +
                 '}';
     }
 }

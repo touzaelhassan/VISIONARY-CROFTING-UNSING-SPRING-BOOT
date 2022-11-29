@@ -32,4 +32,9 @@ public class CommandeItemService implements ICommandeItemService {
     public List<CommandeItems> findAll() {
         return commandeItemRepository.findAll();
     }
+
+    @Override
+    public List<CommandeItems> getCommandeItemByQuantityGreaterThan(int quantity) {
+        return commandeItemRepository.findCommandeItemsByQuantityGreaterThan(quantity);
+    }
 }
