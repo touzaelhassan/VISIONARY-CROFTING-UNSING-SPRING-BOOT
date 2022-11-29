@@ -23,12 +23,12 @@ public class AppelOffreService implements IAppelOffreService {
         return appelOffreRepository.findAll();
     }
 
-    public void addAppelOffre(AppelOffre appelOffre){
+    public AppelOffre addAppelOffre(AppelOffre appelOffre){
         Optional<AppelOffre> appelOffreOptional=appelOffreRepository.findByReference(appelOffre.getReference());
         if(appelOffreOptional.isPresent()){
             throw new IllegalStateException("This reference already exists ");
         }
-        appelOffreRepository.save(appelOffre);
+        return appelOffreRepository.save(appelOffre);
     }
 
     public void deleteAppelOffre(Integer id) {
@@ -42,7 +42,7 @@ public class AppelOffreService implements IAppelOffreService {
     }
 
     @Transactional
-    public void updateAppelOffre(Integer id,AppelOffre appelOffreNew){
+    public void updateAppelOffre(Integer id, AppelOffre appelOffreNew){
         Optional<AppelOffre> appelOffre = appelOffreRepository.findById(id);
         if (appelOffre.isPresent()){
             AppelOffre ao=appelOffre.get();
@@ -53,6 +53,7 @@ public class AppelOffreService implements IAppelOffreService {
             ao.setFournisseur(appelOffreNew.getFournisseur());
 
         }
+
     }
 
     @Override

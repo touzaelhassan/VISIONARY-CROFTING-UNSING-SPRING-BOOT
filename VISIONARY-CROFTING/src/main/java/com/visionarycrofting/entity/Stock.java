@@ -96,7 +96,8 @@ public class Stock implements Serializable {
        this.produits = produits;
    }
 
-   @JsonIgnore
+
+    @JsonIgnore
     public List<AppelOffre> getAppeleOffres() {
         return appeleOffres;
     }

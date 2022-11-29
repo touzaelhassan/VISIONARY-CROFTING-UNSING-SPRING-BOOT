@@ -14,12 +14,12 @@ public class StockController {
     @Autowired
     StockService stockService;
 
-    @GetMapping("/")
+    @GetMapping("/allstocks")
     public List<Stock> getAllStocks(){
         return stockService.getAllStock();
     }
 
-    @PostMapping("/")
+    @PostMapping("/addstock")
     public Object saveStock(@RequestBody Stock stock){
         Stock stockByEmail = stockService.findByEmail(stock.getEmail());
         Stock stockByTele = stockService.findByTelephone(stock.getTelephone());
@@ -44,7 +44,7 @@ public class StockController {
         stock1.setNom(stock.getNom());
         stock1.setPassword(stock.getPassword());
         stock1.setTelephone(stock.getTelephone());
-        stock1.setAppeleOffres(stock.getAppeleOffres());
+        //stock1.setAppeleOffres(stock.getAppeleOffres());
         return stockService.updateStock(stock1);
     }
 
