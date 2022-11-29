@@ -13,4 +13,5 @@ import java.util.Optional;
 @Repository
 public interface IClientRepository extends JpaRepository<Client, Long> {
 
+    public Client findByEmail(String email);
 }

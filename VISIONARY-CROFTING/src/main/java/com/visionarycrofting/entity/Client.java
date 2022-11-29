@@ -15,7 +15,9 @@ public class Client implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String nom;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String telephone;
     private String password;
 

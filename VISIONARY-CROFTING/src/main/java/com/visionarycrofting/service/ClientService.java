@@ -33,4 +33,10 @@ public class ClientService implements IClientService {
         return clientRepository.findById(id);
     }
 
+    @Override
+    public Client findByEmail(String email) {
+        return clientRepository.findByEmail(email);
+
+    }
+
 }

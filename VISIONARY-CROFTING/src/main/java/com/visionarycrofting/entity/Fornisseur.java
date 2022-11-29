@@ -2,38 +2,33 @@ package com.visionarycrofting.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Stock implements Serializable {
+public class Fornisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String nom;
-    private String adresse;
     @Column(unique = true)
     private String email;
     @Column(unique = true)
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "stock")
-    private List<Produit> produits = new ArrayList<>();
+    @OneToMany(mappedBy = "fournisseur")
+    private List<AppelOffre> appelOffres;
 
-    @OneToMany(mappedBy = "stock")
-    private List<AppelOffre> appeleOffres = new ArrayList<>();
-
-    public Stock() {
+    public Fornisseur() {
     }
 
-    public Stock(String nom, String adresse, String email, String telephone, String password,List<AppelOffre> appeleOffres) {
+    public Fornisseur(String nom, String email, String telephone, String password, List<AppelOffre> appelOffres) {
         this.nom = nom;
-        this.adresse = adresse;
+
         this.email = email;
         this.telephone = telephone;
         this.password = password;
-        this.appeleOffres = appeleOffres;
+        this.appelOffres = appelOffres;
     }
 
     public int getId() {
@@ -50,14 +45,6 @@ public class Stock implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     public String getEmail() {
@@ -84,32 +71,23 @@ public class Stock implements Serializable {
         this.password = password;
     }
 
-   //public List<Produit> getProduits() {
-     //   return produits;
-  // }
-
-   public void setProduits(List<Produit> produits) {
-      // this.produits = produits;
-   }
-
-    public List<AppelOffre> getAppeleOffres() {
-        return appeleOffres;
+    public List<AppelOffre> getAppelOffres() {
+        return appelOffres;
     }
 
-    public void setAppeleOffres(List<AppelOffre> appeleOffres) {
-        this.appeleOffres = appeleOffres;
+    public void setAppelOffres(List<AppelOffre> appelOffres) {
+        this.appelOffres = appelOffres;
     }
 
     @Override
     public String toString() {
-        return "Stock{" +
+        return "Fornisseur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", adresse='" + adresse + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
-                ", appeleOffres=" + appeleOffres +
+                ", appelOffres=" + appelOffres +
                 '}';
     }
 }
