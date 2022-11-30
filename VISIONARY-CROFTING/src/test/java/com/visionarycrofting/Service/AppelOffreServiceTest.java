@@ -28,7 +28,7 @@ class AppelOffreServiceTest {
         appelOffre.setId(10);
         appelOffre.setReference("AAZ222");
         appelOffre.setStatusAppelOffre(StatusAppelOffre.OUVERTE);
-        Stock stock = stockService.findOneStock(1);
+        Stock stock = stockService.findOneStock(14);
         assertThat(stock).isNotNull();
         appelOffre.setStock(stock);
 

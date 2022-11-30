@@ -38,12 +38,17 @@ public class CommandItemController {
     public void save(@RequestBody CommandeItems commandeItems,@PathVariable Long id,@PathVariable Long produit){
         Produit produit1 = produitService.getProduitById(produit);
         Commande commande= commandeService.findById(id).get();
-        commandeItems.setCommande(commande);
-        commandeItems.setProduit(produit1);
-        commandeItems.setReference(GenerateReference.applyGenerateReference());
-        commandeItemService.save(commandeItems);
-        updateCommandePrix(commande);
-        produitService.updateProduitQuantity(produit1, commandeItems);
+        if(produit1 !=null ||commande !=null) {
+            commandeItems.setPrix(produit1.getPrix_initial() * Long.parseLong(commandeItems.getQuantity()));
+            commandeItems.setCommande(commande);
+            commandeItems.setProduit(produit1);
+            commandeItems.setReference(GenerateReference.applyGenerateReference());
+            commandeItemService.save(commandeItems);
+            updateCommandePrix(commande);
+            produitService.updateProduitQuantity(produit1, commandeItems);
+        }else{
+            throw new IllegalStateException("Un erreur est Servenue !");
+        }
 
     }
 

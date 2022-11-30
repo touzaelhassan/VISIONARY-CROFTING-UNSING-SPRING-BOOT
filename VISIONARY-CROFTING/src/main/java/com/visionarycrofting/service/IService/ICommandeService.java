@@ -15,4 +15,5 @@ public interface ICommandeService {
     Commande findByReference(String ref);
 
 
+    List<Commande> findEffectuedCommands();
 }

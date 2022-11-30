@@ -2,6 +2,7 @@ package com.visionarycrofting.service;
 
 import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.CommandeItems;
+import com.visionarycrofting.entity.StatusCommande;
 import com.visionarycrofting.repository.ICommandeRepository;
 import com.visionarycrofting.service.IService.ICommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,10 @@ public class CommandeService implements ICommandeService {
         return commandeRepository.findCommandeByReference(ref);
     }
 
-
+    @Override
+    public List<Commande> findEffectuedCommands() {
+        return commandeRepository.findCommandesByStatus(StatusCommande.EFFECTUER);
+    }
 
 
 }
