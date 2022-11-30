@@ -44,7 +44,7 @@ public class StockController {
         stock1.setNom(stock.getNom());
         stock1.setPassword(stock.getPassword());
         stock1.setTelephone(stock.getTelephone());
-        stock1.setAppeleOffres(stock.getAppeleOffres());
+        //stock1.setAppeleOffres(stock.getAppeleOffres());
         return stockService.updateStock(stock1);
     }
 

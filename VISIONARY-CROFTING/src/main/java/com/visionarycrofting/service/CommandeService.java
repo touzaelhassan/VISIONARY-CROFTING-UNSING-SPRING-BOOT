@@ -1,6 +1,7 @@
 package com.visionarycrofting.service;
 
 import com.visionarycrofting.entity.Commande;
+import com.visionarycrofting.entity.CommandeItems;
 import com.visionarycrofting.repository.ICommandeRepository;
 import com.visionarycrofting.service.IService.ICommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,8 @@ public class CommandeService implements ICommandeService {
     public Commande findByReference(String ref) {
         return commandeRepository.findCommandeByReference(ref);
     }
+
+
 
 
 }

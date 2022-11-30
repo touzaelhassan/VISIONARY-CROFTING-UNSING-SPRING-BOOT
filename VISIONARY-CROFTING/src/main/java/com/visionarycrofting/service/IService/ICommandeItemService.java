@@ -16,4 +16,6 @@ public interface ICommandeItemService {
     CommandeItems findByRef(String ref);
 
     List<CommandeItems> findAll();
+
+    List<CommandeItems> getCommandeItemByQuantityGreaterThan(int quantity);
 }
