@@ -2,8 +2,10 @@ package com.visionarycrofting.controller;
 
 import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.CommandeItems;
+import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.service.IService.ICommandeItemService;
 import com.visionarycrofting.service.IService.ICommandeService;
+import com.visionarycrofting.service.IService.IProduitService;
 import com.visionarycrofting.utils.GenerateReference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +24,9 @@ public class CommandItemController {
     @Autowired
     ICommandeService commandeService;
 
+    @Autowired
+    IProduitService produitService;
+
 
     @GetMapping("/all_items")
     public List<CommandeItems> findAll(){
@@ -29,13 +34,17 @@ public class CommandItemController {
     }
 
 
-    @GetMapping("/add-commande-items/commande/{id}")
-    public void save(@RequestBody CommandeItems commandeItems,@PathVariable Long id){
+    @GetMapping("/add-commande-items/commande/{id}/produit/{produit}")
+    public void save(@RequestBody CommandeItems commandeItems,@PathVariable Long id,@PathVariable Long produit){
+        Produit produit1 = produitService.getProduitById(produit);
         Commande commande= commandeService.findById(id).get();
         commandeItems.setCommande(commande);
+        commandeItems.setProduit(produit1);
         commandeItems.setReference(GenerateReference.applyGenerateReference());
         commandeItemService.save(commandeItems);
         updateCommandePrix(commande);
+        produitService.updateProduitQuantity(produit1, commandeItems);
+
     }
 
     @Transactional
@@ -70,6 +79,8 @@ public class CommandItemController {
         commande.setPrixTotal(prix);
         commandeService.save(commande);
     }
+
+
 
 
 }
