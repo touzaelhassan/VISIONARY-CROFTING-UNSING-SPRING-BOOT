@@ -11,7 +11,7 @@ public interface IProduitService {
     Produit updateProduit(Produit produit, Long productId);
     Produit getProduitById(Long id);
     List<Produit> getAllProduits();
-    List<Produit> findProuitsByCategory(String category);
+    List<Produit> findProuitsByCategory(int category);
     void updateProduitQuantity(Produit produit1, CommandeItems commandeItems);
 
 }

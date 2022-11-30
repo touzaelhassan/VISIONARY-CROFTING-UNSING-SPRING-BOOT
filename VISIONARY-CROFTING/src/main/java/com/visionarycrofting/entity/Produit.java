@@ -16,6 +16,7 @@ public class Produit implements Serializable {
     private String nom;
     private Float prix_initial;
     private String description;
+
     private Category category;
     private int quantity;
 

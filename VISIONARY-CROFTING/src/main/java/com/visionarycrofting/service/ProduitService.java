@@ -24,6 +24,10 @@ public class ProduitService implements IProduitService {
         Produit DBProduit = iproduitRepository.findById(produitId).orElse(null);
 
         DBProduit.setCategory(produit.getCategory());
+        DBProduit.setNom(produit.getNom());
+        DBProduit.setReference(produit.getReference());
+        DBProduit.setPrix_initial(produit.getPrix_initial());
+        DBProduit.setDescription(produit.getDescription());
 
         return iproduitRepository.save(DBProduit);
 
@@ -38,7 +42,7 @@ public class ProduitService implements IProduitService {
     public List<Produit> getAllProduits() { return iproduitRepository.findAll(); }
 
     @Override
-    public List<Produit> findProuitsByCategory(String category) {
+    public List<Produit> findProuitsByCategory(int category) {
         return  iproduitRepository.findByCategory(category);
     }
 
