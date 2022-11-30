@@ -2,6 +2,7 @@ package com.visionarycrofting.service;
 
 import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.CommandeItems;
+import com.visionarycrofting.entity.StatusCommande;
 import com.visionarycrofting.repository.ICommandeRepository;
 import com.visionarycrofting.service.IService.ICommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,22 @@ public class CommandeService implements ICommandeService {
         return commandeRepository.findCommandeByReference(ref);
     }
 
+    @Override
+    public List<Commande> findEffectuedCommands() {
+        return commandeRepository.findCommandesByStatus(StatusCommande.EFFECTUER);
+    }
 
+    public void updateCommandePrix( Commande commande){
+        List<CommandeItems> items= commande.getCommandeItems();
+        Float prix= (float) 0;
+        for(CommandeItems item : items){
+            System.out.println(item.getReference());
+            prix+=item.getPrix();
+        }
+        System.out.println(prix);
+        commande.setPrixTotal(prix);
+        save(commande);
+    }
 
 
 }

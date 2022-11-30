@@ -1,8 +1,10 @@
 package com.visionarycrofting.controller;
 
 
+import com.visionarycrofting.entity.Category;
 import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.CommandeItems;
+import com.visionarycrofting.entity.StatusCommande;
 import com.visionarycrofting.service.IService.ICommandeService;
 import com.visionarycrofting.utils.GenerateReference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ public class CommandeController {
     public List<Commande> findAll(){
         return commandeService.findAll();
     }
+
     @GetMapping("/commande_id/{id}")
     public Optional<Commande> findById(@PathVariable Long id){
         return commandeService.findById(id);
@@ -40,6 +43,20 @@ public class CommandeController {
         return commandeService.findByReference(ref);
     }
 
+    @GetMapping ("/passe_commande/{ref}")
+    public Object updateStatusCommande(@PathVariable String ref){
+        Commande commande=commandeService.findByReference(ref);
+        if(commande!=null || commande.getStatus()!= StatusCommande.EFFECTUER){
+             commande.setStatus(StatusCommande.EFFECTUER);
+             return commandeService.save(commande);
+        }else{
+            return "Un erreur est servenue , verifier votre commande";
+        }
+    }
 
+    @GetMapping ("/commandes_effectuer")
+    public List<Commande> getEffectuedCommands(){
+        return commandeService.findEffectuedCommands();
+    }
 
 }

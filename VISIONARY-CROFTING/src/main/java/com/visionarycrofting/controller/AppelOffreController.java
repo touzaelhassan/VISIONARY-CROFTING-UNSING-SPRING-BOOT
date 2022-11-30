@@ -1,8 +1,6 @@
 package com.visionarycrofting.controller;
 
 import com.visionarycrofting.entity.AppelOffre;
-import com.visionarycrofting.entity.Fornisseur;
-import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.entity.StatusAppelOffre;
 import com.visionarycrofting.service.AppelOffreService;
 import org.springframework.beans.factory.annotation.Autowired;
