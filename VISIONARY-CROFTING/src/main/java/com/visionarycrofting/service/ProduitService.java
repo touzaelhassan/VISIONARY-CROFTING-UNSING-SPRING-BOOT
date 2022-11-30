@@ -1,5 +1,6 @@
 package com.visionarycrofting.service;
 
+import com.visionarycrofting.entity.CommandeItems;
 import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.repository.IproduitRepository;
 import com.visionarycrofting.service.IService.IProduitService;
@@ -41,4 +42,9 @@ public class ProduitService implements IProduitService {
         return  iproduitRepository.findByCategory(category);
     }
 
+
+    public void updateProduitQuantity(Produit produit1, CommandeItems commandeItems){
+        produit1.setQuantity(produit1.getQuantity()-commandeItems.getQuantity());
+        addProduit(produit1);
+    }
 }
