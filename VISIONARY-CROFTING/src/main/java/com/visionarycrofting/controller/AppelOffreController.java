@@ -1,8 +1,6 @@
 package com.visionarycrofting.controller;
 
 import com.visionarycrofting.entity.AppelOffre;
-import com.visionarycrofting.entity.Fornisseur;
-import com.visionarycrofting.entity.Produit;
 import com.visionarycrofting.entity.StatusAppelOffre;
 import com.visionarycrofting.service.AppelOffreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,17 @@ public class AppelOffreController {
     }
     @PostMapping
     public void addAppelOffre(@RequestBody AppelOffre appelOffre){
-        appelOffreService.addAppelOffre(appelOffre);
+        if(appelOffre.getReference().isEmpty() || appelOffre.getReference() == null){
+            throw new IllegalStateException("Reference is empty");
+        }else if(appelOffre.getStatusAppelOffre()==null){
+            throw new IllegalStateException("Status is empty");
+        }
+        /*else if(appelOffre.getStock()==null){
+            throw new IllegalStateException("Fornisseur is empty");
+        }*/else{
+            appelOffreService.addAppelOffre(appelOffre);
+        }
+
     }
     @DeleteMapping(path = "{id}")
     public void deleteAppelOffre(@PathVariable("id") Integer id){

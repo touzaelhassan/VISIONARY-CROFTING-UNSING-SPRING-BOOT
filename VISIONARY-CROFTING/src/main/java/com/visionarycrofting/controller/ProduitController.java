@@ -31,11 +31,10 @@ public class ProduitController {
     public Produit getProduitById(@PathVariable Long produitId){ return produitService.getProduitById(produitId); }
 
     @GetMapping("/{category}")
-    public List<Produit> getAllProduitsByCategory(@PathVariable String category){
+    public List<Produit> getAllProduitsByCategory(@PathVariable int category){
+
         return produitService.findProuitsByCategory(category);
+
     }
-
-
-
 
 }

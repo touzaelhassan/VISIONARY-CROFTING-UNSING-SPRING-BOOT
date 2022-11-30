@@ -3,6 +3,7 @@ package com.visionarycrofting.controller;
 import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.CommandeItems;
 import com.visionarycrofting.entity.Produit;
+import com.visionarycrofting.entity.StatusCommande;
 import com.visionarycrofting.service.IService.ICommandeItemService;
 import com.visionarycrofting.service.IService.ICommandeService;
 import com.visionarycrofting.service.IService.IProduitService;
@@ -38,13 +39,14 @@ public class CommandItemController {
     public void save(@RequestBody CommandeItems commandeItems,@PathVariable Long id,@PathVariable Long produit){
         Produit produit1 = produitService.getProduitById(produit);
         Commande commande= commandeService.findById(id).get();
-        if(produit1 !=null ||commande !=null) {
-            commandeItems.setPrix(produit1.getPrix_initial() * Long.parseLong(commandeItems.getQuantity()));
+        if(produit1 !=null || commande !=null || commandeItems.getQuantity()>0 || !(commande.getStatus() == StatusCommande.EFFECTUER)) {
+            assert produit1 != null;
+            commandeItems.setPrix(produit1.getPrix_initial() * (commandeItems.getQuantity()));
             commandeItems.setCommande(commande);
             commandeItems.setProduit(produit1);
             commandeItems.setReference(GenerateReference.applyGenerateReference());
             commandeItemService.save(commandeItems);
-            updateCommandePrix(commande);
+            commandeService.updateCommandePrix(commande);
             produitService.updateProduitQuantity(produit1, commandeItems);
         }else{
             throw new IllegalStateException("Un erreur est Servenue !");
@@ -58,7 +60,7 @@ public class CommandItemController {
         commandeItemService.deleteByRef(ref);
         if(commandeItemService.findByRef(ref)==null){
             Commande commande= commandeService.findById(id).get();
-            updateCommandePrix(commande);
+            commandeService.updateCommandePrix(commande);
         }
 
     }
@@ -73,17 +75,7 @@ public class CommandItemController {
 
 
 
-    public void updateCommandePrix( Commande commande){
-        List<CommandeItems> items= commande.getCommandeItems();
-        Float prix= (float) 0;
-        for(CommandeItems item : items){
-            System.out.println(item.getReference());
-            prix+=item.getPrix();
-        }
-        System.out.println(prix);
-        commande.setPrixTotal(prix);
-        commandeService.save(commande);
-    }
+
 
 
 

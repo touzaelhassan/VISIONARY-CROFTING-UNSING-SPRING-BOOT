@@ -18,7 +18,6 @@ class AppelOffreServiceTest {
 
     @Autowired
     AppelOffreService appelOffreService;
-
     AppelOffre appelOffre = new AppelOffre();
     @Autowired
     StockService stockService;

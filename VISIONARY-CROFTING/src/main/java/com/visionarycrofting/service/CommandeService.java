@@ -42,5 +42,17 @@ public class CommandeService implements ICommandeService {
         return commandeRepository.findCommandesByStatus(StatusCommande.EFFECTUER);
     }
 
+    public void updateCommandePrix( Commande commande){
+        List<CommandeItems> items= commande.getCommandeItems();
+        Float prix= (float) 0;
+        for(CommandeItems item : items){
+            System.out.println(item.getReference());
+            prix+=item.getPrix();
+        }
+        System.out.println(prix);
+        commande.setPrixTotal(prix);
+        save(commande);
+    }
+
 
 }
