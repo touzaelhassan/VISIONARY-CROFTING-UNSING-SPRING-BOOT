@@ -61,4 +61,11 @@ public class AppelOffreService implements IAppelOffreService {
         return appelOffreRepository.findByStatusAppelOffre(statusAppelOffre);
 
     }
+
+    @Override
+    public Optional<AppelOffre> findById(Integer id) {
+        return appelOffreRepository.findById(id);
+    }
+
+
 }
