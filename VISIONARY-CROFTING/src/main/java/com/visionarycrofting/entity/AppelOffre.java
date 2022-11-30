@@ -13,7 +13,7 @@ public class AppelOffre {
     @Enumerated(EnumType.STRING)
     private StatusAppelOffre statusAppelOffre;
     @ManyToOne
-    private Produit Produit;
+    private Produit produit;
 
     @ManyToOne
     Stock stock;
@@ -25,7 +25,7 @@ public class AppelOffre {
         this.id = id;
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
-        Produit = produit;
+        this.produit = produit;
         this.stock = stock;
         this.fournisseur = fournisseur;
     }
@@ -33,7 +33,7 @@ public class AppelOffre {
     public AppelOffre(String reference, StatusAppelOffre statusAppelOffre, Produit produit, Stock stock, Fornisseur fournisseur) {
         this.reference = reference;
         this.statusAppelOffre = statusAppelOffre;
-        Produit = produit;
+        this.produit = produit;
         this.stock = stock;
         this.fournisseur = fournisseur;
     }
@@ -66,11 +66,11 @@ public class AppelOffre {
     }
 
     public Produit getProduit() {
-        return Produit;
+        return produit;
     }
 
     public void setProduit(Produit produit) {
-        Produit = produit;
+        this.produit = produit;
     }
 
     public Stock getStock() {
@@ -95,7 +95,7 @@ public class AppelOffre {
                 "id=" + id +
                 ", reference='" + reference + '\'' +
                 ", statusAppelOffre=" + statusAppelOffre +
-                ", Produit=" + Produit +
+                ", Produit=" + produit +
                 ", stock=" + stock +
                 ", fournisseur=" + fournisseur +
                 '}';
