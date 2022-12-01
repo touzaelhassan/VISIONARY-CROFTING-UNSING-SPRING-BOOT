@@ -54,5 +54,10 @@ public class CommandeService implements ICommandeService {
         save(commande);
     }
 
+    @Override
+    public void saveCommandeItems(Commande commande, List<CommandeItems> commandeItems) {
+        commandeRepository.save(commande);
+    }
+
 
 }

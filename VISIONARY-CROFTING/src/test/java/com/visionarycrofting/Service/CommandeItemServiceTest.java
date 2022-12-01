@@ -29,13 +29,14 @@ class CommandeItemServiceTest {
     @Test
     void save() {
         int commandeItemsListFirst = commandeItemService.findAll().size();
+        Commande commande1 = new Commande();
         System.out.println(commandeItemsListFirst);
         commandeItems.setReference(GenerateReference.applyGenerateReference());
         commandeItems.setPrix(19f);
         commandeItems.setQuantity(6);
         Commande commande = commandeService.findByReference("F2LEE9YA");
         assertThat(commande).isNotNull();
-        commandeItems.setCommande(commande);
+        commandeItems.setCommande(commande1);
         assertThat(commandeItems.getPrix()).isGreaterThan(0).isNotNull();
         assertThat(commandeItems.getQuantity()).isGreaterThan(0).isNotNull();
         assertThat(commandeItems.getReference()).isNotNull().isNotEmpty();

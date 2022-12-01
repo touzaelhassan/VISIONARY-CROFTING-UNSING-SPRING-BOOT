@@ -22,7 +22,7 @@ public class CommandeController {
     ICommandeService commandeService;
 
     @PostMapping("/add_commande")
-    public Commande save(@RequestBody Commande commande) {
+    public Commande save(@RequestBody Commande commande ) {
         commande.setDate(LocalDate.now());
         commande.setReference(GenerateReference.applyGenerateReference());
         return commandeService.save(commande);
@@ -43,7 +43,7 @@ public class CommandeController {
         return commandeService.findByReference(ref);
     }
 
-    @GetMapping ("/passe_commande/{ref}")
+    @PutMapping ("/passe_commande/{ref}")
     public Object updateStatusCommande(@PathVariable String ref){
         Commande commande=commandeService.findByReference(ref);
         if(commande!=null || commande.getStatus()!= StatusCommande.EFFECTUER){
@@ -57,6 +57,12 @@ public class CommandeController {
     @GetMapping ("/commandes_effectuer")
     public List<Commande> getEffectuedCommands(){
         return commandeService.findEffectuedCommands();
+    }
+
+
+    @PostMapping("/savecommande")
+    public void saveCommande(@RequestBody Commande commande ){
+        commandeService.saveCommandeItems(commande,commande.getCommandeItems());
     }
 
 }
