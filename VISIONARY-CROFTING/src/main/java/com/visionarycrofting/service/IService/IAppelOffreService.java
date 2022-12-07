@@ -1,7 +1,6 @@
 package com.visionarycrofting.service.IService;
 
 import com.visionarycrofting.entity.AppelOffre;
-import com.visionarycrofting.entity.Commande;
 import com.visionarycrofting.entity.StatusAppelOffre;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface IAppelOffreService {
 
     public void deleteAppelOffre(Integer id);
 
-    public void updateAppelOffre(Integer id, AppelOffre appelOffre);
+    public AppelOffre updateAppelOffre(Integer id, AppelOffre appelOffre);
 
     public List<AppelOffre> findByStatusAppelOffre(StatusAppelOffre statusAppelOffre);
 
