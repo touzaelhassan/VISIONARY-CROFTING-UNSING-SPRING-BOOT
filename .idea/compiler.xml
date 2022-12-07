@@ -10,11 +10,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="SPRING-BOOT-PROJECT" target="19" />
       <module name="VISIONARY-CROFTING" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SPRING-BOOT-PROJECT" options="-parameters" />
       <module name="VISIONARY-CROFTING" options="-parameters" />
     </option>
   </component>
