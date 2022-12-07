@@ -7,7 +7,6 @@ import com.visionarycrofting.service.IService.IAppelOffreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,8 +40,7 @@ public class AppelOffreService implements IAppelOffreService {
         appelOffreRepository.deleteById(id);
     }
 
-    @Transactional
-    public void updateAppelOffre(Integer id, AppelOffre appelOffreNew){
+    public AppelOffre updateAppelOffre(Integer id, AppelOffre appelOffreNew){
         Optional<AppelOffre> appelOffre = appelOffreRepository.findById(id);
         if (appelOffre.isPresent()){
             AppelOffre ao=appelOffre.get();
@@ -53,6 +51,8 @@ public class AppelOffreService implements IAppelOffreService {
             ao.setFournisseur(appelOffreNew.getFournisseur());
 
         }
+         appelOffreRepository.save(appelOffre.get());
+        return appelOffreNew;
 
     }
 
