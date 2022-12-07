@@ -1,5 +1,7 @@
 package com.visionarycrofting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Fornisseur implements Serializable {
     private String telephone;
     private String password;
 
-    @OneToMany(mappedBy = "fournisseur")
+    @OneToMany(mappedBy = "fournisseur",fetch = FetchType.LAZY)
     private List<AppelOffre> appelOffres;
 
     public Fornisseur() {
@@ -70,7 +72,7 @@ public class Fornisseur implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
+@JsonIgnore
     public List<AppelOffre> getAppelOffres() {
         return appelOffres;
     }
