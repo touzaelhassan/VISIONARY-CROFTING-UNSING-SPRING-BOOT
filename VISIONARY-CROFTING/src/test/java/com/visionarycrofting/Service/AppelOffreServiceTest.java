@@ -24,7 +24,7 @@ class AppelOffreServiceTest {
     @Test
     void save() {
         int appelOffreListFirst = appelOffreService.getAppelOffres().size();
-        appelOffre.setId(10);
+        appelOffre.setId(-10);
         appelOffre.setReference("AAZ222");
         appelOffre.setStatusAppelOffre(StatusAppelOffre.OUVERTE);
         Stock stock = stockService.findOneStock(14);

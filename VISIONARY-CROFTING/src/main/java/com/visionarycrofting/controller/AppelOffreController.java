@@ -11,12 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("appelOffre")
 public class AppelOffreController {
-    private final AppelOffreService appelOffreService;
-
     @Autowired
-    public AppelOffreController(AppelOffreService appelOffreService) {
-        this.appelOffreService = appelOffreService;
-    }
+    private  AppelOffreService appelOffreService;
+
 
     @GetMapping
     public List<AppelOffre> getAppelOffres(){
@@ -42,8 +39,9 @@ public class AppelOffreController {
 
     }
     @PutMapping(path = "{id}")
-    public void updateAppelOffre(@PathVariable("id") Integer id, @RequestBody AppelOffre appelOffre){
-     appelOffreService.updateAppelOffre(id,appelOffre);
+    public AppelOffre updateAppelOffre(@PathVariable("id") Integer id, @RequestBody AppelOffre appelOffre){
+
+     return appelOffreService.updateAppelOffre(id,appelOffre);
     }
     @GetMapping(path = "status/{status}")
     public List<AppelOffre> getByStatus(@PathVariable("status") String status){
